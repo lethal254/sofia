@@ -43,7 +43,8 @@ export default function Home() {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         <meta name='description' content='portfolio model kenya sophia' />
       </Head>
-      {isTabletOrMobile ? <MobileHeader /> : <Header />}
+      {isTabletOrMobile && <MobileHeader />}
+      {!isTabletOrMobile && <Header />}
 
       {/* Hero */}
       <section className={styles.hero} id='home'>
