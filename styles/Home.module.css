@@ -97,8 +97,7 @@
   display: block;
 }
 .galleryImage:hover .imagewrapper {
-  transform: scale(1.5);
-  filter: sepia(70%);
+  transform: scale(1.2);
 }
 
 /* Contact */
