@@ -176,6 +176,7 @@
 @media only screen and (max-width: 500px) {
   .hero {
     margin-top: 3rem;
+    min-height: 60vh;
   }
   .heroContent {
     flex-direction: column;
@@ -187,7 +188,7 @@
     margin-bottom: 2rem;
   }
   .hero article h2 {
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 30px;
   }
   .hero article button {
