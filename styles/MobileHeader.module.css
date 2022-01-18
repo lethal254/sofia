@@ -1,0 +1,60 @@
+.mobileHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  position: relative;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 9;
+}
+.mobileHeader h1 {
+  font-size: 1.5rem;
+}
+.burger {
+  cursor: pointer;
+}
+.mobileHeader .burger span {
+  width: 30px;
+  height: 3px;
+  display: block;
+  background: black;
+  margin-bottom: 0.3rem;
+}
+.navigation {
+  transform: translateX(-100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  width: 50%;
+  height: 100vh;
+  z-index: 5;
+  transition: 0.5s ease-in-out;
+  padding: 4rem;
+  background: #fff;
+}
+.navigation h2 {
+  color: #161c2d;
+  font-size: 2rem;
+  margin-bottom: 5rem;
+}
+.navigation ul {
+  list-style-type: none;
+  width: 70%;
+}
+.navigation ul li {
+  margin-bottom: 2rem;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  padding-bottom: 1rem;
+}
+.navigation ul li a {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #161c2d;
+  transition: all 0.5s ease;
+}
+.navigation ul li a:hover {
+  color: #495fef;
+}
