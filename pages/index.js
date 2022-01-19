@@ -5,6 +5,9 @@ import Masonry from "react-masonry-css"
 import MobileHeader from "../components/MobileHeader"
 import Head from "next/head"
 import { useState, useCallback, useEffect } from "react"
+import { BsInstagram } from "react-icons/bs"
+import { MdCall } from "react-icons/md"
+import Link from "next/link"
 
 const useMediaQuery = (width) => {
   const [targetReached, setTargetReached] = useState(false)
@@ -63,7 +66,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <Head>
-        <title>Sophia</title>
+        <title>Sophie</title>
 
         <meta name='description' content='portfolio model kenya sophia' />
       </Head>
@@ -129,9 +132,23 @@ export default function Home() {
             fitness. I am currently looking for opportunities that would enhance
             my skills
           </p>
+
           <button>
             <a href='mailto:obatjael@gmail.com'>Talk to me now</a>
           </button>
+          <div className={styles.contactIcons}>
+            <Link href='https://www.instagram.com/sophie_jael_/?hl=en'>
+              <a>
+                <BsInstagram />
+              </a>
+            </Link>
+            <Link href='https://www.instagram.com/sophie_jael_/?hl=en'>
+              <a>
+                <MdCall />
+                <span> 0781969555/0798667464</span>
+              </a>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

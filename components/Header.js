@@ -4,7 +4,7 @@ import styles from "../styles/Header.module.css"
 const Header = () => {
   return (
     <div className={styles.header}>
-      <h1>Sophia.</h1>
+      <h1>Sophie.</h1>
       <nav className={styles.navigation}>
         <ul>
           <li>

@@ -7,7 +7,7 @@ const MobileHeader = () => {
 
   return (
     <div className={styles.mobileHeader}>
-      <h1>Sophia.</h1>
+      <h1>Sophie.</h1>
       <div
         className={styles.burger}
         onClick={() => {
