@@ -125,8 +125,9 @@ export default function Home() {
             have been the brand ambassador at Pritt Events Limited. Besides that
             I have the pleasure to have modeled at Tuvibe high fashion modeling
             event and Ere Nouvelle Beauty Salon. I have interests in commercial
-            and brand modeling. I am passionate about fashion. I am currently
-            looking for opportunities that would enhance my skills
+            and brand modeling. I am passionate about fashion, health and
+            fitness. I am currently looking for opportunities that would enhance
+            my skills
           </p>
           <button>
             <a href='mailto:obatjael@gmail.com'>Talk to me now</a>
