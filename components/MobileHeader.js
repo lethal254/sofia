@@ -20,7 +20,7 @@ const MobileHeader = () => {
       <nav
         className={styles.navigation}
         style={{ transform: `${showNav ? "translateX(0)" : ""}` }}>
-        <h2>Sophia</h2>
+        <h2>Sophie.</h2>
         <ul>
           <li>
             <Link
