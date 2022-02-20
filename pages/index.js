@@ -8,6 +8,7 @@ import { useState, useCallback, useEffect } from "react"
 import { BsInstagram } from "react-icons/bs"
 import { MdCall } from "react-icons/md"
 import Link from "next/link"
+import client from "../sanity"
 
 const useMediaQuery = (width) => {
   const [targetReached, setTargetReached] = useState(false)
@@ -35,12 +36,14 @@ const useMediaQuery = (width) => {
   return targetReached
 }
 
-export default function Home() {
+export default function Home({ heroTitle, photos, heroSubtitle, about }) {
   const breakpoint = {
     default: 4,
     1100: 2,
     700: 1,
   }
+
+  console.log(heroTitle, photos, heroSubtitle, about)
 
   const isBreakpoint = useMediaQuery(900)
 
@@ -77,8 +80,8 @@ export default function Home() {
       <section className={styles.hero} id='home'>
         <div className={styles.heroContent}>
           <article>
-            <p>Model, Writer</p>
-            <h2>Commercial and brand model.</h2>
+            <p>{heroSubtitle?.herosubtitle}</p>
+            <h2>{heroTitle?.herotitle}</h2>
             <button>
               <a href='mailto:obatjael@gmail.com'>Hire me</a>
             </button>
@@ -103,35 +106,28 @@ export default function Home() {
             breakpointCols={breakpoint}
             className='my-masonry-grid'
             columnClassName='my-masonry-grid_column'>
-            {images.map((image) => (
-              <div key={image} className={styles.galleryImage}>
-                <div className={styles.imagewrapper}>
-                  <Image
-                    src={`/${image}`}
-                    width={150}
-                    height={150}
-                    layout='responsive'
-                    objectFit='cover'
-                    alt='Sofia'
-                  />
+            {photos.length > 0 &&
+              photos?.map((photo) => (
+                <div key={photo.photodetails} className={styles.galleryImage}>
+                  <div className={styles.imagewrapper}>
+                    <Image
+                      src={`${photo.image.asset.url}`}
+                      width={150}
+                      height={150}
+                      layout='responsive'
+                      objectFit='cover'
+                      alt={photo.photodetails}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </Masonry>
         </div>
       </section>
       <section className={styles.contact} id='contact'>
         <div className={styles.contactContent}>
           <h4>About me.</h4>
-          <p>
-            I am Sophie Jael, a model and writer. For the past three years I
-            have been the brand ambassador at Pritt Events Limited. Besides that
-            I have the pleasure to have modeled at Tuvibe high fashion modeling
-            event and Ere Nouvelle Beauty Salon. I have interests in commercial
-            and brand modeling. I am passionate about fashion, health and
-            fitness. I am currently looking for opportunities that would enhance
-            my skills
-          </p>
+          <p>{about?.about}</p>
 
           <button>
             <a href='mailto:obatjael@gmail.com'>Talk to me now</a>
@@ -153,4 +149,37 @@ export default function Home() {
       </section>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const heroSubtitle = await client.fetch(
+    `*[_type == "herosubtitle"\][0]{
+      herosubtitle
+    }`
+  )
+  const heroTitle = await client.fetch(
+    `*[_type == "herotitle"\][0]{
+      herotitle
+    }`
+  )
+  const about = await client.fetch(
+    `*[_type == "about"\][0]{
+      about
+    }`
+  )
+
+  const photos = await client.fetch(`*[_type == "photos"\]{
+    photodetails,
+    image{
+      asset ->{
+        url,
+
+      },
+      alt
+    }
+  }`)
+
+  return {
+    props: { heroTitle, photos, heroSubtitle, about },
+  }
 }
